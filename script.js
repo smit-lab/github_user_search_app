@@ -41,11 +41,11 @@ USER_FORM.addEventListener("submit", (e) => {
 
 async function fetchData(giturl) {
   const GITHUB_TOKEN = "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";
-  const headers = new Headers({ Authorization: `Bearer ${GITHUB_TOKEN}` });
-  console.log("Request headers:", headers);
+  const header = new Headers({ Authorization: `Bearer ${GITHUB_TOKEN}` });
+  console.log("Request headers:", header);
   const SET_TIME = performance.now();
   try {
-    const response = await fetch(giturl, { headers });
+    const response = await fetch(giturl, { header });
     console.log("Response status:", response.status);
     if (response.status === 404) {
       // User not found, handle accordingly
