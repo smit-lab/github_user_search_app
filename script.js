@@ -34,7 +34,7 @@ USER_FORM.addEventListener("submit", (e) => {
   e.preventDefault();
   const USER_INPUT_NAME = document.querySelector("#user_input").value.trim();
   const GITHUB_URL = `https://api.github.com/users/${
-    USER_INPUT_NAME === null ? "google" : USER_INPUT_NAME
+    USER_INPUT_NAME === "" ? "google" : USER_INPUT_NAME
   }`;
   fetchData(GITHUB_URL);
 });
