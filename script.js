@@ -39,9 +39,8 @@ USER_FORM.addEventListener("submit", (e) => {
   fetchData(GITHUB_URL);
 });
 
-const GITHUB_TOKEN = "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";
-
 async function fetchData(url) {
+  const GITHUB_TOKEN = "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";
   const headers = new Headers({ Authorization: `Bearer ${GITHUB_TOKEN}` });
   const SET_TIME = performance.now();
   try {
