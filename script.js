@@ -42,14 +42,11 @@ USER_FORM.addEventListener("submit", (e) => {
 async function fetchData(giturl) {
   const GITHUB_TOKEN = "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";
   const header = new Headers({ Authorization: `Bearer ${GITHUB_TOKEN}` });
-  console.log("Request headers:", header);
   const SET_TIME = performance.now();
   try {
     const response = await fetch(giturl, { header });
-    console.log("Response status:", response.status);
     if (response.status === 404) {
       // User not found, handle accordingly
-      console.error(`User not found for ${url}`);
       PRINT_ERROR_RESULT.textContent = "No results";
       return; // Exit the function to prevent further execution
     }
@@ -57,13 +54,9 @@ async function fetchData(giturl) {
       throw new Error(`HTTP response error: ${response.status}`);
     }
     const DATA = await response.json();
-    const END_TIME = performance.now();
-    const TIME_TAKEN = END_TIME - SET_TIME;
-    console.log(`Time taken to fetch data: ${TIME_TAKEN} ms`);
-    // console.log(DATA);
     printData(DATA);
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Error:", error);
   }
 }
 
